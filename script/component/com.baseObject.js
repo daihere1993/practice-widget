@@ -23,14 +23,14 @@
 		init: function (option) {
 			this.index = com.baseObject.index++;
 			//控件属性
-			if ( typeofoption != "undefined" ) {
+			if ( typeof option != "undefined" ) {
 				this.option = option;
 			} else {
 				this.option = {};
 			}
 			//this.base();
 			this.logInfo("baseObject.init");
-			var ua = navigator.uerAgent.toLowerCase();
+			var ua = navigator.userAgent.toLowerCase();
 			//浏览器判断
 			this.browser = {
 				msie:(/msie ([\d.]+)/).test(ua),
@@ -47,16 +47,24 @@
 		/**
 		 * 创建函数
 		 */
-		 create: function () {
-			 this.className = "com.baseObject";
-			 this.logInfo("baseObject.create");
-			 this._update = true;
-			 this.beginDate = null;
+		create: function () {
+			this.className = "com.baseObject";
+			this.logInfo("baseObject.create");
+			this._update = true;
+			this.beginDate = null;
 		 },
 		 /**
 		  *	获取控件名
 		  *	@param str 字符串
 		  *	@param date 日期
+		  */
+		 getName: function () {
+			 return this.name || this.className;
+		 },
+		 /**
+		  * 日志输出函数
+		  * @param  str 字符串
+		  * @param date 日期
 		  */
 		 logInfo: function (str) {
 			 if ( typeof window.console != "undefined" ) {
@@ -106,7 +114,7 @@
 		  strLen: function (str) {
 			  var v = str;
 			  var len = 0;
-			  for ( var i = 0, l = v.length; i++ ) {
+			  for ( var i = 0, l = v.length; i < l;i++ ) {
 				  if ( v.charCodeAt(i) > 256 ) {
 					  len += 2;
 				  } else {
@@ -128,7 +136,7 @@
 		    * 是否不为空
 		    * @param value 判断的值
 		    */
-		   isNoEmpty: function (value) {
+		   isNotEmpty: function (value) {
 			   return !this.isEmpty(value);
 		   },
 		   /**

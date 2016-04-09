@@ -1,7 +1,8 @@
 staticScript = [
-	"../component/com.baseObject.js",
 	"../css/com.comStyle.css",
-	"./nameSpace.js",
 	"./extend.js",
+	"./nameSpace.js",
+	"../component/com.baseObject.js",
+	"../component/ui/com.ui.window.js",
 	"./render.js"
 ];

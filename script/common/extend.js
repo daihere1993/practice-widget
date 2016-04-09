@@ -25,7 +25,6 @@ function Extend (baseClass, childClass, isBind) {
 			}
 		}
 	}
-
 	/**
 	 * 合并同名函数
 	 * 把两个对象的同名函数, 并排起来, 默认调用子类函数
@@ -42,7 +41,7 @@ function Extend (baseClass, childClass, isBind) {
 			//执行子类的方法, 并把结果返回
 			var result = childClass[funcName].apply(this, arguments);
 			//还原基类的this.base函数
-			this.base = base;
+			this.base = _base;
 
 			return result;
 		};
@@ -61,7 +60,7 @@ function Extend (baseClass, childClass, isBind) {
 
 	//覆盖父类的同名函数 通过prototype定义的函数
 	for ( var name in childClass ) {
-		if ( childClass.haiOwnProperty(name) ) {
+		if ( childClass.hasOwnProperty(name) ) {
 			//如果此类继承自父类baseClass并且父类原型中存在同名函数name
 			if ( baseClass && typeof (childClass[name]) ==="function" && typeof (curClass.prototype[name]) === "function" ) {
 				//合并函数

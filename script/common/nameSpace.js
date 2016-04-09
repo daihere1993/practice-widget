@@ -12,7 +12,7 @@ function nameSpace () {
 		}
 		obj = window[ns];
 		//循环判断对象已存在, 如果未存在, 则初始化成原始对象
-		for ( var j = 1; j < len; j++ ) {
+		for ( var j = 1, l = arr.length; j < l; j++ ) {
 			if ( obj[arr[j]] === undefined ) {
 				obj[arr[j]] = {};
 			}
